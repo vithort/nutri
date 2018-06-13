@@ -13,6 +13,13 @@ export class DicasPage {
 
   email: string;
   nome: string;
+  fotoPerfil: boolean = false;
+
+  facebook = {
+    nome: ''
+    ,fotoUrl: ''
+
+  }
 
   constructor(
     public navCtrl: NavController
@@ -22,7 +29,16 @@ export class DicasPage {
   ) {
 
     this.email = fire.auth.currentUser.email;
-    this.nome = fire.auth.currentUser.displayName; //nao implementado ainda
+
+    this.facebook.nome = fire.auth.currentUser.displayName;
+    this.facebook.fotoUrl = fire.auth.currentUser.photoURL;
+
+    if (this.facebook.fotoUrl == null) {
+      this.fotoPerfil = false;
+    } else {
+      this.fotoPerfil = true;
+    }
+
   }
 
   logout() {
