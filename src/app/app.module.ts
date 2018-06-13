@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DicasPage } from '../pages/dicas/dicas';
+import { RecuperarPage } from '../pages/recuperar/recuperar';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
@@ -27,6 +28,7 @@ const firebaseAuth = {
     ,HomePage
     ,DicasPage
     ,RegisterPage
+    ,RecuperarPage
   ],
   imports: [
     BrowserModule
@@ -40,6 +42,7 @@ const firebaseAuth = {
     ,HomePage
     ,DicasPage
     ,RegisterPage
+    ,RecuperarPage
   ],
   providers: [
     StatusBar

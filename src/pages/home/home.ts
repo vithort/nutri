@@ -4,6 +4,7 @@ import { DicasPage } from '../dicas/dicas';
 import { RegisterPage } from '../register/register';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Users } from './users';
+import { RecuperarPage } from '../recuperar/recuperar';
 
 @Component({
   selector: 'page-home',
@@ -63,6 +64,11 @@ export class HomePage {
   cadastrar() {
 
     this.navCtrl.push(RegisterPage);
+  }
+
+  recuperar() {
+
+    this.navCtrl.push(RecuperarPage);
   }
 
 }
