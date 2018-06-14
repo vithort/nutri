@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import * as Config from '../config';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/forkJoin';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class WordpressService {

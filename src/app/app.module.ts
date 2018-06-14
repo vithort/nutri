@@ -14,6 +14,8 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
 
+import { WordpressService } from '../services/wordpress.service';
+
 const firebaseAuth = {
   apiKey: "AIzaSyAX5Bki0llpVU54rk_jVZIOV2WJvn3RqDc"
   ,authDomain: "nutri-1a072.firebaseapp.com"
