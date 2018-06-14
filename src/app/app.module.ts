@@ -12,6 +12,7 @@ import { RecuperarPage } from '../pages/recuperar/recuperar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { RegisterPage } from '../pages/register/register';
+import { ProfilePage } from '../pages/profile/profile';
 
 const firebaseAuth = {
   apiKey: "AIzaSyAX5Bki0llpVU54rk_jVZIOV2WJvn3RqDc"
@@ -29,6 +30,7 @@ const firebaseAuth = {
     ,DicasPage
     ,RegisterPage
     ,RecuperarPage
+    ,ProfilePage
   ],
   imports: [
     BrowserModule
@@ -43,6 +45,7 @@ const firebaseAuth = {
     ,DicasPage
     ,RegisterPage
     ,RecuperarPage
+    ,ProfilePage
   ],
   providers: [
     StatusBar
