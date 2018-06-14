@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, ToastController, LoadingController
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage } from '../home/home';
 import { WordpressService } from '../../services/wordpress.service';
+import { PostPage } from '../post/post';
 
 @IonicPage()
 @Component({
@@ -53,6 +54,12 @@ export class DicasPage {
     toast.setMessage('Deslogado com sucesso!');
     toast.present();
     this.navCtrl.setRoot(HomePage);
+  }
+
+  postTapped(event, post) {
+    this.navCtrl.push(PostPage, {
+      item: post
+    });
   }
 
 }
