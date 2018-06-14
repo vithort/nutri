@@ -30,7 +30,7 @@ export class HomePage {
 
     //console.log("O usuário digitado foi: ", this.email.value);
     //console.log("A senha digitada foi: ", this.password.value);
-    let toast = this.toastCtrl.create({duration: 3000, position: 'bottom'});
+    let toast = this.toastCtrl.create({duration: 2000, position: 'bottom'});
     
     this.fire.auth.signInWithEmailAndPassword(this.email.value, this.password.value)
     .then(data => {
@@ -74,11 +74,33 @@ export class HomePage {
 
   loginFacebook() {
     this.fire.auth.signInWithPopup( new firebase.auth.FacebookAuthProvider())
-    .then( res => {
+    .then(res => {
       
       //console.log(res);
       this.navCtrl.setRoot(DicasPage);
     })
+
+  }
+
+  loginVisitante() {
+
+    let toast = this.toastCtrl.create({duration: 2000, position: 'bottom'});
+
+    this.fire.auth.signInAnonymously()
+    .then(data => {
+      
+      console.log('Data do anonimo', data);
+      this.navCtrl.setRoot(DicasPage);
+    })
+    .catch((error: any) => {
+      if (error.code == 'auth/operation-not-allowed') {
+        //Thrown if anonymous accounts are not enabled. Enable anonymous accounts in the Firebase Console, under the Auth tab.
+        toast.setMessage('O modo visitante está desabilitado!');
+      } else {
+        console.log('Error: ', error);
+      }
+      toast.present();
+    });
 
   }
 
