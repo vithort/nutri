@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HomePage } from '../home/home';
+import { WordpressService } from '../../services/wordpress.service';
 
 @IonicPage()
 @Component({
@@ -11,12 +12,37 @@ import { HomePage } from '../home/home';
 })
 export class DicasPage {
 
+  posts: Array<any> = new Array<any>();
+  morePagesAvaliable: boolean = true;
+
   constructor(
     public navCtrl: NavController
     ,public navParams: NavParams
     ,public fire: AngularFireAuth
     ,public toastCtrl: ToastController
+    ,public loadingCtrl: LoadingController
+    ,public wordpressService: WordpressService
   ) {
+
+  }
+
+  ionViewWillEnter() {
+
+    this.morePagesAvaliable = true;
+    if (!(this.posts.length > 0)) {
+      let loading = this.loadingCtrl.create();
+      loading.present();
+
+      this.wordpressService.getRecentPosts()
+      .subscribe(data => {
+        console.log('Data das postagens: ', data);
+        for(let post of data){
+          post.excerpt.rendered = post.excerpt.rendered.split('<a')[0] + "<p>";
+          this.posts.push(post);
+        }
+        loading.dismiss();
+      });
+    }
 
   }
 

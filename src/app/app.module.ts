@@ -15,6 +15,7 @@ import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
 
 import { WordpressService } from '../services/wordpress.service';
+import { HttpModule } from '@angular/http';
 
 const firebaseAuth = {
   apiKey: "AIzaSyAX5Bki0llpVU54rk_jVZIOV2WJvn3RqDc"
@@ -39,6 +40,7 @@ const firebaseAuth = {
     ,IonicModule.forRoot(MyApp)
     ,AngularFireAuthModule
     ,AngularFireModule.initializeApp(firebaseAuth)
+    ,HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,6 +54,7 @@ const firebaseAuth = {
   providers: [
     StatusBar
     ,SplashScreen
+    ,WordpressService
     ,{provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
