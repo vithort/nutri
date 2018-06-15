@@ -62,4 +62,31 @@ export class DicasPage {
     });
   }
 
+  doInfinite(infiniteScroll){
+
+    let page = (Math.ceil(this.posts.length/10)) + 1;
+    let loading = true;
+
+    this.wordpressService.getRecentPosts(page)
+    .subscribe(data => {
+      for (let post of data) {
+        if (!loading) {
+          infiniteScroll.complete();
+        }
+        this.posts.push(post);
+        loading = false;
+      }
+    }, err => {
+      this.morePagesAvaliable = false;
+    })
+  }
+
+  doRefresh(refresher) {
+
+    this.navCtrl.setRoot(this.navCtrl.getActive().component);
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
+  }
+
 }
