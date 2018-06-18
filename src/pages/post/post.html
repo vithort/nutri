@@ -13,8 +13,8 @@
     <div>
       <img [src]="post.better_featured_image.source_url" class="imgTopo"/>
     </div>
-    <div class="post-title" [innerHTML]="post.title.rendered"></div>
-    <p class="port-content" [innerHTML]="post.content.rendered"></p>
+    <div class="post-title" [innerHTML]="post.title.rendered" padding></div>
+    <p class="post-content" [innerHTML]="post.content.rendered" padding></p>
     <ion-row>
       <ion-col>
           <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
