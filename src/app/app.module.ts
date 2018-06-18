@@ -14,6 +14,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
 import { PostPage } from '../pages/post/post';
+import { TabsPage } from '../pages/tabs/tabs';
 
 import { WordpressService } from '../services/wordpress.service';
 import { HttpModule } from '@angular/http';
@@ -36,6 +37,7 @@ const firebaseAuth = {
     ,RecuperarPage
     ,ProfilePage
     ,PostPage
+    ,TabsPage
   ],
   imports: [
     BrowserModule
@@ -53,6 +55,7 @@ const firebaseAuth = {
     ,RecuperarPage
     ,ProfilePage
     ,PostPage
+    ,TabsPage
   ],
   providers: [
     StatusBar

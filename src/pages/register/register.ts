@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { DicasPage } from '../dicas/dicas';
+import { TabsPage } from '../tabs/tabs';
 
 
 @IonicPage()
@@ -11,6 +11,8 @@ import { DicasPage } from '../dicas/dicas';
   ,templateUrl: 'register.html'
 })
 export class RegisterPage {
+
+  tabBarElement: any;
 
   @ViewChild('usuario') email;
   @ViewChild('senha') password;
@@ -21,6 +23,25 @@ export class RegisterPage {
     ,public fire: AngularFireAuth
     ,public toastCtrl: ToastController
   ) {
+
+    this.tabBarElement = document.querySelector('.show-tabbar');
+
+  }
+
+  ionViewWillEnter() {
+    let tabs = document.querySelectorAll('.show-tabbar');
+    if (tabs == null) {
+        this.tabBarElement.style.display = 'none';
+    }
+  }
+
+  ionViewWillLeave() {
+    let tabs = document.querySelectorAll('.show-tabbar');
+    if (tabs !== null) {
+      Object.keys(tabs).map((key) => {
+        tabs[key].style.display = 'none';
+      });
+    }
   }
 
   registrar() {
@@ -33,7 +54,7 @@ export class RegisterPage {
       console.log('aqui temos a data: ', data);
       toast.setMessage('Usuário criado com sucesso!');
       toast.present();
-      this.navCtrl.setRoot(DicasPage);
+      this.navCtrl.setRoot(TabsPage);
     })
     .catch((error: any) => {
       

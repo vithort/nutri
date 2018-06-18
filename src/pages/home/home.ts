@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, style } from '@angular/core';
 import { NavController, ToastController } from 'ionic-angular';
-import { DicasPage } from '../dicas/dicas';
+import { TabsPage } from '../tabs/tabs';
 import { RegisterPage } from '../register/register';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Users } from './users';
@@ -13,6 +13,7 @@ import firebase from 'firebase';
 })
 export class HomePage {
 
+  tabBarElement: any;
   users: Users = new Users();
 
   @ViewChild('usuario') email;
@@ -24,6 +25,26 @@ export class HomePage {
     ,public fire: AngularFireAuth
   ) {
 
+    this.tabBarElement = document.querySelector('.show-tabbar');
+
+  }
+
+  ngAfterViewInit() {
+    let tabs = document.querySelectorAll('.show-tabbar');
+    if (tabs !== null) {
+      Object.keys(tabs).map((key) => {
+        tabs[key].style.display = 'none';
+      });
+    }
+  }
+
+  ionViewWillLeave() {
+    let tabs = document.querySelectorAll('.show-tabbar');
+    if (tabs !== null) {
+      Object.keys(tabs).map((key) => {
+        tabs[key].style.display = 'none';
+      });
+    }
   }
 
   entrar() {
@@ -39,7 +60,7 @@ export class HomePage {
       console.log('data do login: ', data);
       this.users.email = this.email.value;
       this.users.senha = this.password.value;
-      this.navCtrl.setRoot(DicasPage);
+      this.navCtrl.setRoot(TabsPage);
     })
     .catch((error: any) => {
 
@@ -77,7 +98,7 @@ export class HomePage {
     .then(res => {
       
       //console.log(res);
-      this.navCtrl.setRoot(DicasPage);
+      this.navCtrl.setRoot(TabsPage);
     })
 
   }
@@ -90,7 +111,7 @@ export class HomePage {
     .then(data => {
       
       console.log('Data do anonimo', data);
-      this.navCtrl.setRoot(DicasPage);
+      this.navCtrl.setRoot(TabsPage);
     })
     .catch((error: any) => {
       if (error.code == 'auth/operation-not-allowed') {
