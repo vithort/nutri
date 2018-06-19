@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
+import { HomePage } from '../home/home';
+
 @IonicPage()
 @Component({
   selector: 'page-profile',
@@ -37,6 +39,15 @@ export class ProfilePage {
     } else {
       this.fotoPerfil = true;
     }
+  }
+
+  logout() {
+
+    let toast = this.toastCtrl.create({duration: 2000, position: 'bottom'});
+    this.fire.auth.signOut();
+    toast.setMessage('Deslogado com sucesso!');
+    toast.present();
+    this.navCtrl.setRoot(HomePage);
   }
 
 }
