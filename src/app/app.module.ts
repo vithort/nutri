@@ -15,6 +15,7 @@ import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
 import { PostPage } from '../pages/post/post';
 import { TabsPage } from '../pages/tabs/tabs';
+import { IntroPage } from '../pages/intro/intro';
 
 import { WordpressService } from '../services/wordpress.service';
 import { HttpModule } from '@angular/http';
@@ -38,6 +39,7 @@ const firebaseAuth = {
     ,ProfilePage
     ,PostPage
     ,TabsPage
+    ,IntroPage
   ],
   imports: [
     BrowserModule
@@ -56,6 +58,7 @@ const firebaseAuth = {
     ,ProfilePage
     ,PostPage
     ,TabsPage
+    ,IntroPage
   ],
   providers: [
     StatusBar
